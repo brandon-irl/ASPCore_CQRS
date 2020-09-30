@@ -28,6 +28,8 @@ namespace ASPCore_CQRS
         {
             services.AddSingleton(typeof(Features.WeatherForecast.WeatherForecastService));
             services.AddMediatR(typeof(Startup));
+            // Register MediatR Pipeline Behavior
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
             services.AddControllers();
         }
 
